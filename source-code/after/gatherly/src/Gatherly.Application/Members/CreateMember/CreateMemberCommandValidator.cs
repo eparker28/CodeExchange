@@ -1,0 +1,13 @@
+﻿using FluentValidation;
+using Gatherly.Domain.ValueObjects;
+
+namespace Gatherly.Application.Members.CreateMember;
+internal class CreateMemberCommandValidator : AbstractValidator<CreateMemberCommand>
+{
+    public CreateMemberCommandValidator()
+    {
+        RuleFor(x => x.FirstName).NotEmpty().MaximumLength(FirstName.MaxLength);
+
+        RuleFor(x => x.LastName).NotEmpty().MaximumLength(LastName.MaxLength);
+    }
+}
